@@ -65,9 +65,7 @@
   </div>
 
 <script>
-  // Put your FULL ngrok URL here (you pasted only the prefix).
-  // Example: https://bubonic-unbewitchi-xxxxxx.ngrok-free.app
-  const NGROK_BASE = "https://bubonic-unbewitchi";
+  const NGROK_BASE = "https://bubonic-unbewitchingly-sharron.ngrok-free.dev";
   const API_URL = `${NGROK_BASE}/api/v1/chat/send`;
   document.getElementById("ep").textContent = API_URL;
 
@@ -120,18 +118,14 @@
     msgEl.value = "";
     sendBtn.disabled = true;
 
-    const payload = {
-      tenantId,
-      sessionId,
-      userId: "web",
-      message
-    };
+    const payload = { tenantId, sessionId, userId: "web", message };
 
     try {
       const res = await fetch(API_URL, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "true"
         },
         body: JSON.stringify(payload)
       });
@@ -162,4 +156,3 @@
 </script>
 </body>
 </html>
-
